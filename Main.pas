@@ -9,7 +9,7 @@ uses
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Mask,
   Vcl.WinXPickers, Winapi.ShellAPI, dxSkinsCore, dxSkinDarkroom, cxClasses,
-  cxLookAndFeels, dxSkinsForm, dxSkinCoffee, dxSkinBlack;
+  cxLookAndFeels, dxSkinsForm, dxSkinCoffee, dxSkinBlack, Vcl.Samples.Spin;
 
 type
   TMinForm = class(TForm)
@@ -22,15 +22,23 @@ type
     edDescricao: TEdit;
     edQuantidade: TEdit;
     rgTipo: TRadioGroup;
+    sbFonte: TSpinEdit;
+    Label2: TLabel;
+    sbLargura: TSpinEdit;
+    Label3: TLabel;
+    sbAltura: TSpinEdit;
+    Label4: TLabel;
     procedure btGeraListaClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure btZerarClick(Sender: TObject);
   private
     { Private declarations }
+    xAltura, xLargura, xFonte : string;
     procedure geraLista;
     function RemoverAcentos(S: String): String;
     procedure inicializa;
+
   public
     { Public declarations }
     versao : string;
@@ -100,6 +108,10 @@ var
    caminho: string;
 begin
   // deleta todos os arquivos dentro da pasta .txt e .bat
+  // inicia padrao
+  sbFonte.Text := '150';
+  sbLargura.Text := '185';
+  sbAltura.Text := '20';
   caminho := ExtractFilePath(Application.ExeName);
 
    try
@@ -148,6 +160,11 @@ begin
     rgTipo.SetFocus;
     Exit;
   end;
+
+  xAltura := sbAltura.Text;
+  xFonte := sbFonte.Text;
+  xLargura := sbLargura.Text;
+
   geraLista;
 
 end;
@@ -202,9 +219,8 @@ begin
 
           // Exemplo 1 Padrao
             writeln(arq,'^XA');
-            writeln(arq,'^CF0,40');
-            writeln(arq,'^CF0,150');
-            writeln(arq,'^FO185,20');
+            writeln(arq,'^CF0,'+xFonte);
+            writeln(arq,'^FO'+xLargura+','+xAltura);
             writeln(arq,'^FD'+edDescricao.text+'^FS'); // gera qualquer nome
             writeln(arq,'^SZ');//Redefinição da impressora
             writeln(arq,'^XZ');
@@ -247,9 +263,8 @@ begin
 
           // Exemplo 1 Padrao
             writeln(arq,'^XA');
-            writeln(arq,'^CF0,40');
-            writeln(arq,'^CF0,150');
-            writeln(arq,'^FO185,20');
+            writeln(arq,'^CF0,'+xFonte);
+            writeln(arq,'^FO'+xLargura+','+xAltura);
             writeln(arq,'^FD'+Format('%2.3d', [I])+'^FS'); // gera Numero aqui sera onde vai modificar os nbumero ( Ex:01,02 ... 300
             writeln(arq,'^SZ');//Redefinição da impressora
             writeln(arq,'^XZ');
@@ -285,10 +300,14 @@ end;
 
 procedure TMinForm.inicializa;
 begin
-   rgTipo.ItemIndex := -1;
-   edDescricao.Text := '';
-   edQuantidade.Text := '';
-   edDescricao.SetFocus;
+  rgTipo.ItemIndex := -1;
+  edDescricao.Text := '';
+  edQuantidade.Text := '';
+  edDescricao.SetFocus;
+  // inicia padrao
+  sbFonte.Text := '150'; // Fonte
+  sbLargura.Text := '185'; // Largura (esrquerda, direita)
+  sbAltura.Text := '20'; //(altura)
 
 end;
 

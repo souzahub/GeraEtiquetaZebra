@@ -4,9 +4,9 @@ object MinForm: TMinForm
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'GERA ETIQUETA  v.1.0.0'
-  ClientHeight = 214
-  ClientWidth = 443
-  Color = clGray
+  ClientHeight = 238
+  ClientWidth = 581
+  Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
@@ -5077,21 +5077,42 @@ object MinForm: TMinForm
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 16
+  object Label2: TLabel
+    Left = 457
+    Top = 56
+    Width = 105
+    Height = 16
+    Caption = 'Tamanho da fonte'
+  end
+  object Label3: TLabel
+    Left = 457
+    Top = 112
+    Width = 99
+    Height = 16
+    Caption = 'Esquerda/ Direita'
+  end
+  object Label4: TLabel
+    Left = 457
+    Top = 167
+    Width = 34
+    Height = 16
+    Caption = 'Altura'
+  end
   object Button1: TButton
-    Left = 287
-    Top = 158
-    Width = 138
-    Height = 38
+    Left = 320
+    Top = 182
+    Width = 105
+    Height = 37
     Cursor = crHandPoint
     Caption = 'Gerar .BAT'
     TabOrder = 0
     OnClick = Button1Click
   end
   object btGeraLista: TButton
-    Left = 151
-    Top = 158
-    Width = 130
-    Height = 38
+    Left = 209
+    Top = 182
+    Width = 105
+    Height = 37
     Cursor = crHandPoint
     Caption = 'Gerar TXT'
     TabOrder = 1
@@ -5099,17 +5120,17 @@ object MinForm: TMinForm
   end
   object btZerar: TButton
     Left = 17
-    Top = 158
-    Width = 64
-    Height = 38
+    Top = 182
+    Width = 121
+    Height = 37
     Cursor = crHandPoint
-    Caption = 'ZERAR'
+    Caption = 'ZERAR / PADR'#195'O'
     TabOrder = 2
     OnClick = btZerarClick
   end
   object gbTipo: TGroupBox
     Left = 17
-    Top = 24
+    Top = 29
     Width = 408
     Height = 113
     Caption = 'Informa'#231#245'es'
@@ -5138,7 +5159,7 @@ object MinForm: TMinForm
       Width = 172
       Height = 24
       CharCase = ecUpperCase
-      MaxLength = 10
+      MaxLength = 20
       TabOrder = 0
     end
     object edQuantidade: TEdit
@@ -5147,7 +5168,7 @@ object MinForm: TMinForm
       Width = 74
       Height = 24
       Anchors = [akTop, akRight]
-      MaxLength = 10
+      MaxLength = 4
       TabOrder = 1
     end
     object rgTipo: TRadioGroup
@@ -5161,5 +5182,38 @@ object MinForm: TMinForm
         'N'#250'mero')
       TabOrder = 2
     end
+  end
+  object sbFonte: TSpinEdit
+    Left = 457
+    Top = 78
+    Width = 101
+    Height = 26
+    MaxLength = 4
+    MaxValue = 9000
+    MinValue = 0
+    TabOrder = 4
+    Value = 0
+  end
+  object sbLargura: TSpinEdit
+    Left = 457
+    Top = 134
+    Width = 101
+    Height = 26
+    MaxLength = 4
+    MaxValue = 9000
+    MinValue = 0
+    TabOrder = 5
+    Value = 0
+  end
+  object sbAltura: TSpinEdit
+    Left = 457
+    Top = 188
+    Width = 101
+    Height = 26
+    MaxLength = 4
+    MaxValue = 9000
+    MinValue = 0
+    TabOrder = 6
+    Value = 0
   end
 end
