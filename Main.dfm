@@ -1,11 +1,12 @@
-object MinForm: TMinForm
+object MainForm: TMainForm
   Left = 0
   Top = 0
+  ActiveControl = sbAlturaV
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'GERA ETIQUETA  v.1.0.0'
-  ClientHeight = 238
-  ClientWidth = 581
+  Caption = 'GERA ETIQUETA  v.18.01.24'
+  ClientHeight = 263
+  ClientWidth = 720
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -5077,42 +5078,23 @@ object MinForm: TMinForm
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 16
-  object Label2: TLabel
-    Left = 457
-    Top = 56
-    Width = 105
-    Height = 16
-    Caption = 'Tamanho da fonte'
-  end
-  object Label3: TLabel
-    Left = 457
-    Top = 112
-    Width = 99
-    Height = 16
-    Caption = 'Esquerda/ Direita'
-  end
-  object Label4: TLabel
-    Left = 457
-    Top = 167
-    Width = 34
-    Height = 16
-    Caption = 'Altura'
-  end
   object Button1: TButton
-    Left = 320
-    Top = 182
+    Left = 711
+    Top = 8
     Width = 105
-    Height = 37
+    Height = 18
     Cursor = crHandPoint
     Caption = 'Gerar .BAT'
+    Enabled = False
     TabOrder = 0
+    Visible = False
     OnClick = Button1Click
   end
   object btGeraLista: TButton
-    Left = 209
-    Top = 182
-    Width = 105
-    Height = 37
+    Left = 535
+    Top = 184
+    Width = 177
+    Height = 55
     Cursor = crHandPoint
     Caption = 'Gerar TXT'
     TabOrder = 1
@@ -5120,9 +5102,9 @@ object MinForm: TMinForm
   end
   object btZerar: TButton
     Left = 17
-    Top = 182
+    Top = 15
     Width = 121
-    Height = 37
+    Height = 41
     Cursor = crHandPoint
     Caption = 'ZERAR / PADR'#195'O'
     TabOrder = 2
@@ -5130,42 +5112,46 @@ object MinForm: TMinForm
   end
   object gbTipo: TGroupBox
     Left = 17
-    Top = 29
-    Width = 408
+    Top = 65
+    Width = 688
     Height = 113
     Caption = 'Informa'#231#245'es'
     TabOrder = 3
     DesignSize = (
-      408
+      688
       113)
     object lbQuantidade: TLabel
-      Left = 319
-      Top = 30
+      Left = 591
+      Top = 29
       Width = 65
       Height = 16
       Anchors = [akTop, akRight]
       Caption = 'Quantidade'
+      ExplicitLeft = 311
     end
-    object Label1: TLabel
+    object lbDescricao: TLabel
       Left = 133
-      Top = 30
-      Width = 55
+      Top = 29
+      Width = 189
       Height = 16
-      Caption = 'Descri'#231#227'o'
+      Caption = 'Descri'#231#227'o - Max. 50 caracteres *'
+      Enabled = False
     end
     object edDescricao: TEdit
       Left = 133
       Top = 51
-      Width = 172
+      Width = 436
       Height = 24
+      Hint = 'MAX (20 DIGITOS)'
       CharCase = ecUpperCase
-      MaxLength = 20
+      Enabled = False
+      MaxLength = 50
       TabOrder = 0
     end
     object edQuantidade: TEdit
-      Left = 319
+      Left = 591
       Top = 51
-      Width = 74
+      Width = 80
       Height = 24
       Anchors = [akTop, akRight]
       MaxLength = 4
@@ -5181,39 +5167,176 @@ object MinForm: TMinForm
         'Nome'
         'N'#250'mero')
       TabOrder = 2
+      OnClick = rgTipoClick
     end
   end
-  object sbFonte: TSpinEdit
-    Left = 457
-    Top = 78
-    Width = 101
-    Height = 26
-    MaxLength = 4
-    MaxValue = 9000
-    MinValue = 0
+  object btDados: TButton
+    Left = 159
+    Top = 15
+    Width = 105
+    Height = 41
+    Cursor = crHandPoint
+    Caption = 'ETIQUETAS'
     TabOrder = 4
-    Value = 0
+    OnClick = btDadosClick
   end
-  object sbLargura: TSpinEdit
-    Left = 457
-    Top = 134
-    Width = 101
-    Height = 26
-    MaxLength = 4
-    MaxValue = 9000
-    MinValue = 0
+  object pnVertical: TPanel
+    Left = 8
+    Top = 181
+    Width = 377
+    Height = 61
+    BevelOuter = bvNone
+    Color = clWhite
+    ParentBackground = False
     TabOrder = 5
-    Value = 0
+    object Label2: TLabel
+      Left = 9
+      Top = 7
+      Width = 105
+      Height = 16
+      Caption = 'Tamanho da fonte'
+    end
+    object Label3: TLabel
+      Left = 133
+      Top = 7
+      Width = 99
+      Height = 16
+      Caption = 'Esquerda/ Direita'
+    end
+    object Label4: TLabel
+      Left = 255
+      Top = 8
+      Width = 34
+      Height = 16
+      Caption = 'Altura'
+    end
+    object sbFonte: TSpinEdit
+      Left = 9
+      Top = 29
+      Width = 101
+      Height = 26
+      MaxLength = 4
+      MaxValue = 9000
+      MinValue = 0
+      TabOrder = 0
+      Value = 0
+    end
+    object sbLargura: TSpinEdit
+      Left = 132
+      Top = 29
+      Width = 101
+      Height = 26
+      MaxLength = 4
+      MaxValue = 9000
+      MinValue = 0
+      TabOrder = 1
+      Value = 0
+    end
+    object sbAltura: TSpinEdit
+      Left = 255
+      Top = 30
+      Width = 101
+      Height = 26
+      MaxLength = 4
+      MaxValue = 9000
+      MinValue = 0
+      TabOrder = 2
+      Value = 0
+    end
   end
-  object sbAltura: TSpinEdit
-    Left = 457
-    Top = 188
-    Width = 101
-    Height = 26
-    MaxLength = 4
-    MaxValue = 9000
-    MinValue = 0
+  object rghModelo: TRadioGroup
+    Left = 464
+    Top = 7
+    Width = 241
+    Height = 58
+    Caption = 'Modelo'
+    Columns = 2
+    Items.Strings = (
+      'Vertical'
+      'Horizontal')
     TabOrder = 6
-    Value = 0
+    OnClick = rghModeloClick
+  end
+  object pnHorizontal: TPanel
+    Left = 7
+    Top = 183
+    Width = 441
+    Height = 61
+    BevelOuter = bvNone
+    Color = clWhite
+    ParentBackground = False
+    TabOrder = 7
+    object Label1: TLabel
+      Left = 8
+      Top = 6
+      Width = 77
+      Height = 16
+      Caption = 'Comprimento'
+    end
+    object Label5: TLabel
+      Left = 99
+      Top = 6
+      Width = 34
+      Height = 16
+      Caption = 'Altura'
+    end
+    object Comprimento_texto: TLabel
+      Left = 183
+      Top = 6
+      Width = 109
+      Height = 16
+      Caption = 'Comprimento texto'
+    end
+    object Label6: TLabel
+      Left = 308
+      Top = 6
+      Width = 66
+      Height = 16
+      Caption = 'Altura texto'
+    end
+    object sbComprimentoV: TSpinEdit
+      Left = 9
+      Top = 29
+      Width = 64
+      Height = 26
+      MaxLength = 4
+      MaxValue = 9000
+      MinValue = 0
+      TabOrder = 0
+      Value = 0
+    end
+    object sbAlturaV: TSpinEdit
+      Left = 99
+      Top = 29
+      Width = 64
+      Height = 26
+      MaxLength = 4
+      MaxValue = 9000
+      MinValue = 0
+      TabOrder = 1
+      Value = 0
+    end
+    object sbCompriTextoV: TSpinEdit
+      Left = 183
+      Top = 29
+      Width = 109
+      Height = 26
+      MaxLength = 4
+      MaxValue = 9000
+      MinValue = 0
+      TabOrder = 2
+      Value = 0
+    end
+    object sbAlturaTextoV: TSpinEdit
+      Left = 308
+      Top = 29
+      Width = 109
+      Height = 26
+      MaxLength = 4
+      MaxValue = 9000
+      MinValue = 0
+      TabOrder = 3
+      Value = 0
+    end
   end
 end

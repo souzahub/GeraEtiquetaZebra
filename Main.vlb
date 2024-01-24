@@ -1,9 +1,6 @@
 ﻿[edQuantidade]
 Coordinates=135,78,95,58
 
-[Label1]
-Coordinates=240,78,53,58
-
 [btZerar]
 Coordinates=73,10,56,58
 
@@ -26,24 +23,9 @@ Coordinates=303,78,81,58
 [Button1]
 Coordinates=10,146,59,58
 
-[Label2]
-Coordinates=265,10,53,58
-
-[Label3]
-Coordinates=10,10,53,58
-
-[Label4]
-Coordinates=139,10,53,58
-
 []
-Coordinates=180,146,70,36
-
-[sbFonte]
-Coordinates=260,146,70,36
-
-[sbLargura]
-Coordinates=340,146,70,36
-
-[sbAltura]
 Coordinates=10,214,70,36
+
+[lbDescricao]
+Coordinates=240,78,53,58
 
