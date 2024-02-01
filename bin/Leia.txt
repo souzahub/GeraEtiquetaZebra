@@ -1,0 +1,8 @@
+* Instalar o banco de dados dentro da pasta Firibird
+* Mudar o caminho o arquivo de acordo do seu local dentro do arquivo "bdcaminho.cfg"
+
+Pague-me um café:
+
+Pix (Celular)
+22999569035
+Luan souza de siqueira 
