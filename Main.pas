@@ -10,20 +10,17 @@ uses
   FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Mask,
   Vcl.WinXPickers, Winapi.ShellAPI, dxSkinsCore, dxSkinDarkroom, cxClasses,
   cxLookAndFeels, dxSkinsForm, dxSkinCoffee, dxSkinBlack, Vcl.Samples.Spin,
-  uEtiqueta, uDados;
+  uEtiqueta, uDados, Vcl.StyledButton;
 
 type
   TMainForm = class(TForm)
     Button1: TButton;
-    btGeraLista: TButton;
-    btZerar: TButton;
     gbTipo: TGroupBox;
     lbQuantidade: TLabel;
     lbDescricao: TLabel;
     edDescricao: TEdit;
-    edQuantidade: TEdit;
+    edQtdInicio: TEdit;
     rgTipo: TRadioGroup;
-    btDados: TButton;
     pnVertical: TPanel;
     Label2: TLabel;
     sbFonte: TSpinEdit;
@@ -41,13 +38,19 @@ type
     Comprimento_texto: TLabel;
     sbAlturaTextoV: TSpinEdit;
     Label6: TLabel;
-    procedure btGeraListaClick(Sender: TObject);
+    edQtdFim: TEdit;
+    Label7: TLabel;
+    Label8: TLabel;
+    btGeraArquivo: TStyledGraphicButton;
+    btIniciar: TStyledGraphicButton;
+    StyledGraphicButton2: TStyledGraphicButton;
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
-    procedure btZerarClick(Sender: TObject);
     procedure rgTipoClick(Sender: TObject);
-    procedure btDadosClick(Sender: TObject);
     procedure rghModeloClick(Sender: TObject);
+    procedure btGeraArquivoClick(Sender: TObject);
+    procedure btIniciarClick(Sender: TObject);
+    procedure StyledGraphicButton2Click(Sender: TObject);
   private
     { Private declarations }
     xAltura, xLargura, xFonte : string;
@@ -90,66 +93,15 @@ begin
   ArquivoBat;
 end;
 
-procedure TMainForm.btZerarClick(Sender: TObject);
-var
-   SearchRec : TSearchRec;
-   caminho: string;
-begin
-  // deleta todos os arquivos dentro da pasta .txt e .bat
-
-  caminho := ExtractFilePath(Application.ExeName);
-
-   try
-
-      FindFirst(caminho+'*.txt', faAnyFile, SearchRec );
-      repeat
-         DeleteFile( caminho + SearchRec.name );
-      until FindNext( SearchRec ) <> 0;
-   finally
-      FindClose( SearchRec );
-   end;
-
-    try
-
-      FindFirst(caminho+'*.bat', faAnyFile, SearchRec );
-      repeat
-         DeleteFile( caminho + SearchRec.name );
-      until FindNext( SearchRec ) <> 0;
-   finally
-      FindClose( SearchRec );
-   end;
-
-   ShowMessage('Zerado com sucesso !');
-
-    // detela os arquivos exixtentes antes de começar
-//  try
-//       DeleteFile(ExtractFilePath(Application.ExeName)+'ETQ.txt');
-//       DeleteFile(ExtractFilePath(Application.ExeName)+edDescricao.text+'.bat');
-//   Except
-//
-//  end;
-
- inicializa;
- DirecionaPainel;
-
-end;
-
 procedure TMainForm.FormShow(Sender: TObject);
 begin
  inicializa;
  DirecionaPainel;
 end;
 
-procedure TMainForm.btDadosClick(Sender: TObject);
+procedure TMainForm.btGeraArquivoClick(Sender: TObject);
 begin
-  dmDados.xAtivaBusca := True;
-  formEtiqueta.showmodal;
-  Exit;
-end;
-
-procedure TMainForm.btGeraListaClick(Sender: TObject);
-begin
-  if rgTipo.ItemIndex = -1 then
+ if rgTipo.ItemIndex = -1 then
   begin
     Application.MessageBox('Tipo Obrigatório!',' ATENÇÃO ',mb_Ok+MB_ICONINFORMATION);
     rgTipo.SetFocus;
@@ -166,10 +118,10 @@ begin
 
   end;
 
-  if (edQuantidade.Text = '0') or (edQuantidade.Text = '') then
+  if (edQtdInicio.Text = '0') or (edQtdInicio.Text = '') or (edQtdFim.Text = '0') or (edQtdFim.Text = '')then
   begin
     Application.MessageBox('Quantidade zerada ou sem dados!',' ATENÇÃO ',mb_Ok+MB_ICONINFORMATION);
-    edQuantidade.SetFocus;
+
     Exit;
 
   end;
@@ -227,10 +179,10 @@ begin
                 Exit;
               end;
 
-              if edQuantidade.Text = '' then
+              if (edQtdInicio.Text = '') or (edQtdFim.Text = '') then
               begin
                 ShowMessage('Informe a quantidade da Etiqueta!');
-                edQuantidade.SetFocus;
+
                 Exit;
               end;
 
@@ -241,7 +193,7 @@ begin
                 AssignFile(arq,caminho);
                 Rewrite(arq);
 
-                for I := 1 to  StrToInt(edQuantidade.Text) do
+                for I := StrToInt(edQtdInicio.Text) to  StrToInt(edQtdFim.Text) do
                 begin
                 // Exemplo 1 Padrao
 //                 ^FT  = COMPRIMENTO,ALTURA
@@ -249,6 +201,7 @@ begin
 //                 xComprVert, xAltVert, xComprTVert, xAltTVert
 
                   writeln(arq,'^XA');
+                  writeln(arq,'^CI28'); // aceita acento
                   writeln(arq,'^FT'+xComprVert+','+xAltVert);
                   writeln(arq,'^A0B,'+xComprTVert+','+xAltTVert);
                   writeln(arq,'^FH\^CI28');
@@ -257,7 +210,6 @@ begin
                   writeln(arq,'^CI27');
                   writeln(arq,'^SZ');
                   writeln(arq,'^XZ');
-
                   Next;
                 end;
       //           Result := FileSetAttr(caminho, FileGetAttr(caminho) or faReadOnly); // executa os comando de leitura ou nao
@@ -278,10 +230,10 @@ begin
             end;
 
           1:begin // numero
-              if edQuantidade.Text = '' then
+              if (edQtdInicio.Text = '') or (edQtdFim.Text = '') then
               begin
                 ShowMessage('Informe a quantidade da Etiqueta!');
-                edQuantidade.SetFocus;
+                edQtdInicio.SetFocus;
                 Exit;
               end;
 
@@ -292,10 +244,11 @@ begin
                 AssignFile(arq,caminho);
                 Rewrite(arq);
 
-                for I := 1 to  StrToInt(edQuantidade.Text) do
+                for I := StrToInt(edQtdInicio.Text) to  StrToInt(edQtdFim.Text) do
                 begin
                 // Exemplo 1 Padrao
                   writeln(arq,'^XA');
+                  writeln(arq,'^CI28'); // aceita acento
                   writeln(arq,'^FT'+xComprVert+','+xAltVert);
                   writeln(arq,'^A0B,'+xComprTVert+','+xAltTVert);
                   writeln(arq,'^FH\^CI28');
@@ -345,10 +298,10 @@ begin
               Exit;
             end;
 
-            if edQuantidade.Text = '' then
+            if (edQtdInicio.Text = '') or (edQtdFim.Text = '') then
             begin
               ShowMessage('Informe a quantidade da Etiqueta!');
-              edQuantidade.SetFocus;
+
               Exit;
             end;
 
@@ -359,10 +312,11 @@ begin
               AssignFile(arq,caminho);
               Rewrite(arq);
 
-              for I := 1 to  StrToInt(edQuantidade.Text) do
+              for I := StrToInt(edQtdInicio.Text) to  StrToInt(edQtdFim.Text) do
               begin
               // Exemplo 1 Padrao
                 writeln(arq,'^XA');
+                writeln(arq,'^CI28'); // aceita acento
                 writeln(arq,'^CF0,'+xFonte);
                 writeln(arq,'^FO'+xLargura+','+xAltura);
                 writeln(arq,'^FD'+edDescricao.text+'^FS'); // gera qualquer nome
@@ -388,10 +342,10 @@ begin
           end;
 
         1:begin // numero
-            if edQuantidade.Text = '' then
+            if (edQtdInicio.Text = '') or (edQtdFim.Text = '') then
             begin
               ShowMessage('Informe a quantidade da Etiqueta!');
-              edQuantidade.SetFocus;
+
               Exit;
             end;
 
@@ -402,10 +356,11 @@ begin
               AssignFile(arq,caminho);
               Rewrite(arq);
 
-              for I := 1 to  StrToInt(edQuantidade.Text) do
+              for I := StrToInt(edQtdInicio.Text) to  StrToInt(edQtdFim.Text) do
               begin
               // Exemplo 1 Padrao
                 writeln(arq,'^XA');
+                writeln(arq,'^CI28'); // aceita acento
                 writeln(arq,'^CF0,'+xFonte);
                 writeln(arq,'^FO'+xLargura+','+xAltura);
                 writeln(arq,'^FD'+Format('%2.3d', [I])+'^FS'); // gera Numero aqui sera onde vai modificar os nbumero ( Ex:01,02 ... 300
@@ -453,7 +408,8 @@ begin
   rghModelo.ItemIndex := -1;
   rgTipo.ItemIndex := -1;
   edDescricao.Text := '';
-  edQuantidade.Text := '';
+  edQtdInicio.Text := '';
+  edQtdFim.Text := '';
   lbDescricao.Enabled := True;
   edDescricao.Enabled := True;
   edDescricao.SetFocus;
@@ -474,15 +430,11 @@ end;
 procedure TMainForm.ArquivoBat;
 var
   caminho: string;
-  I: Integer;
   arq: TextFile; { declarando a variável "arq" do tipo arquivo texto }
   Result: Integer;
 begin
-
-
   caminho := extractfilepath(Application.ExeName) + 'GERAR ETIQUETA' + '.bat';
   try
-    I := 0;
     AssignFile(arq, caminho);
     Rewrite(arq);
     writeln(arq, 'ECHO OFF');
@@ -544,21 +496,78 @@ begin
 end;
 procedure TMainForm.rgTipoClick(Sender: TObject);
 begin
+  edQtdInicio.Text := '';
+  edQtdFim.Text := '';
+
   case rgTipo.ItemIndex of
 
    0: begin
+        edQtdInicio.Text := '1';
+        edQtdFim.Text := '1';
         lbDescricao.Enabled := True;
         edDescricao.Enabled := True;
         edDescricao.SetFocus;
       end;
 
    1: begin
+        edQtdInicio.SetFocus;
         lbDescricao.Enabled := False;
         edDescricao.Enabled := False;
-        edQuantidade.SetFocus;
+
       end;
 
   end;
+end;
+
+procedure TMainForm.StyledGraphicButton2Click(Sender: TObject);
+begin
+  dmDados.xAtivaBusca := True;
+  formEtiqueta.showmodal;
+  Exit;
+end;
+
+procedure TMainForm.btIniciarClick(Sender: TObject);
+var
+   SearchRec : TSearchRec;
+   caminho: string;
+begin
+  // deleta todos os arquivos dentro da pasta .txt e .bat
+
+  caminho := ExtractFilePath(Application.ExeName);
+
+   try
+
+      FindFirst(caminho+'*.txt', faAnyFile, SearchRec );
+      repeat
+         DeleteFile( caminho + SearchRec.name );
+      until FindNext( SearchRec ) <> 0;
+   finally
+      FindClose( SearchRec );
+   end;
+
+    try
+
+      FindFirst(caminho+'*.bat', faAnyFile, SearchRec );
+      repeat
+         DeleteFile( caminho + SearchRec.name );
+      until FindNext( SearchRec ) <> 0;
+   finally
+      FindClose( SearchRec );
+   end;
+
+   ShowMessage('Zerado com sucesso !');
+
+    // detela os arquivos exixtentes antes de começar
+//  try
+//       DeleteFile(ExtractFilePath(Application.ExeName)+'ETQ.txt');
+//       DeleteFile(ExtractFilePath(Application.ExeName)+edDescricao.text+'.bat');
+//   Except
+//
+//  end;
+
+ inicializa;
+ DirecionaPainel;
+
 end;
 
 end.

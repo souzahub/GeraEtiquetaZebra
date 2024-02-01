@@ -1,10 +1,4 @@
-﻿[edQuantidade]
-Coordinates=135,78,95,58
-
-[btZerar]
-Coordinates=73,10,56,58
-
-[gbTipo]
+﻿[gbTipo]
 Coordinates=10,78,54,58
 Visible=True
 
@@ -17,15 +11,15 @@ Coordinates=74,78,51,58
 [lbQuantidade]
 Coordinates=79,146,91,58
 
-[btGeraLista]
-Coordinates=303,78,81,58
-
 [Button1]
 Coordinates=10,146,59,58
 
 []
-Coordinates=10,214,70,36
+Coordinates=73,10,56,58
 
 [lbDescricao]
 Coordinates=240,78,53,58
+
+[edQtdInicio]
+Coordinates=135,78,95,58
 

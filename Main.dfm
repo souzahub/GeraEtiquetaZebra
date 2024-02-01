@@ -4,9 +4,9 @@ object MainForm: TMainForm
   ActiveControl = sbAlturaV
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'GERA ETIQUETA  v.18.01.24'
+  Caption = 'GERA ETIQUETA  v.31.01.24'
   ClientHeight = 263
-  ClientWidth = 720
+  ClientWidth = 817
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -5078,9 +5078,59 @@ object MainForm: TMainForm
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 16
+  object btGeraArquivo: TStyledGraphicButton
+    Left = 640
+    Top = 188
+    Width = 158
+    Height = 58
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    OnClick = btGeraArquivoClick
+    ParentFont = False
+    Caption = 'GERAR ARQUIVO'
+    StyleDrawType = btRounded
+    StyleFamily = 'Bootstrap'
+    StyleClass = 'Success'
+  end
+  object btIniciar: TStyledGraphicButton
+    Left = 16
+    Top = 15
+    Width = 95
+    Height = 41
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    OnClick = btIniciarClick
+    ParentFont = False
+    Caption = 'INICIAR'
+    StyleDrawType = btRounded
+    StyleFamily = 'Bootstrap'
+    StyleClass = 'Warning'
+  end
+  object StyledGraphicButton2: TStyledGraphicButton
+    Left = 123
+    Top = 15
+    Width = 134
+    Height = 41
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    OnClick = StyledGraphicButton2Click
+    ParentFont = False
+    Caption = 'ETIQUETAS - DADOS'
+    StyleDrawType = btRounded
+    StyleFamily = 'Bootstrap'
+  end
   object Button1: TButton
-    Left = 711
-    Top = 8
+    Left = 863
+    Top = 26
     Width = 105
     Height = 18
     Cursor = crHandPoint
@@ -5090,57 +5140,63 @@ object MainForm: TMainForm
     Visible = False
     OnClick = Button1Click
   end
-  object btGeraLista: TButton
-    Left = 535
-    Top = 184
-    Width = 177
-    Height = 55
-    Cursor = crHandPoint
-    Caption = 'Gerar TXT'
-    TabOrder = 1
-    OnClick = btGeraListaClick
-  end
-  object btZerar: TButton
-    Left = 17
-    Top = 15
-    Width = 121
-    Height = 41
-    Cursor = crHandPoint
-    Caption = 'ZERAR / PADR'#195'O'
-    TabOrder = 2
-    OnClick = btZerarClick
-  end
   object gbTipo: TGroupBox
     Left = 17
     Top = 65
-    Width = 688
+    Width = 781
     Height = 113
     Caption = 'Informa'#231#245'es'
-    TabOrder = 3
+    TabOrder = 1
     DesignSize = (
-      688
+      781
       113)
     object lbQuantidade: TLabel
-      Left = 591
-      Top = 29
-      Width = 65
-      Height = 16
+      Left = 552
+      Top = 72
+      Width = 19
+      Height = 19
       Anchors = [akTop, akRight]
-      Caption = 'Quantidade'
-      ExplicitLeft = 311
+      Caption = 'De'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object lbDescricao: TLabel
       Left = 133
-      Top = 29
+      Top = 48
       Width = 189
       Height = 16
       Caption = 'Descri'#231#227'o - Max. 50 caracteres *'
       Enabled = False
     end
+    object Label7: TLabel
+      Left = 662
+      Top = 70
+      Width = 21
+      Height = 19
+      Anchors = [akTop, akRight]
+      Caption = 'at'#233
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label8: TLabel
+      Left = 554
+      Top = 48
+      Width = 164
+      Height = 16
+      Caption = 'Quantidade  (n'#227'o '#233' aceito 0)'
+    end
     object edDescricao: TEdit
       Left = 133
-      Top = 51
-      Width = 436
+      Top = 70
+      Width = 404
       Height = 24
       Hint = 'MAX (20 DIGITOS)'
       CharCase = ecUpperCase
@@ -5148,13 +5204,14 @@ object MainForm: TMainForm
       MaxLength = 50
       TabOrder = 0
     end
-    object edQuantidade: TEdit
-      Left = 591
-      Top = 51
+    object edQtdInicio: TEdit
+      Left = 576
+      Top = 70
       Width = 80
       Height = 24
       Anchors = [akTop, akRight]
       MaxLength = 4
+      NumbersOnly = True
       TabOrder = 1
     end
     object rgTipo: TRadioGroup
@@ -5169,16 +5226,16 @@ object MainForm: TMainForm
       TabOrder = 2
       OnClick = rgTipoClick
     end
-  end
-  object btDados: TButton
-    Left = 159
-    Top = 15
-    Width = 105
-    Height = 41
-    Cursor = crHandPoint
-    Caption = 'ETIQUETAS'
-    TabOrder = 4
-    OnClick = btDadosClick
+    object edQtdFim: TEdit
+      Left = 690
+      Top = 70
+      Width = 80
+      Height = 24
+      Anchors = [akTop, akRight]
+      MaxLength = 4
+      NumbersOnly = True
+      TabOrder = 3
+    end
   end
   object pnVertical: TPanel
     Left = 8
@@ -5188,7 +5245,7 @@ object MainForm: TMainForm
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
-    TabOrder = 5
+    TabOrder = 2
     object Label2: TLabel
       Left = 9
       Top = 7
@@ -5245,8 +5302,8 @@ object MainForm: TMainForm
     end
   end
   object rghModelo: TRadioGroup
-    Left = 464
-    Top = 7
+    Left = 557
+    Top = 3
     Width = 241
     Height = 58
     Caption = 'Modelo'
@@ -5254,7 +5311,7 @@ object MainForm: TMainForm
     Items.Strings = (
       'Vertical'
       'Horizontal')
-    TabOrder = 6
+    TabOrder = 3
     OnClick = rghModeloClick
   end
   object pnHorizontal: TPanel
@@ -5265,37 +5322,37 @@ object MainForm: TMainForm
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
-    TabOrder = 7
+    TabOrder = 4
     object Label1: TLabel
-      Left = 8
+      Left = 10
       Top = 6
       Width = 77
       Height = 16
       Caption = 'Comprimento'
     end
     object Label5: TLabel
-      Left = 99
+      Left = 101
       Top = 6
       Width = 34
       Height = 16
       Caption = 'Altura'
     end
     object Comprimento_texto: TLabel
-      Left = 183
+      Left = 185
       Top = 6
       Width = 109
       Height = 16
       Caption = 'Comprimento texto'
     end
     object Label6: TLabel
-      Left = 308
+      Left = 310
       Top = 6
       Width = 66
       Height = 16
       Caption = 'Altura texto'
     end
     object sbComprimentoV: TSpinEdit
-      Left = 9
+      Left = 11
       Top = 29
       Width = 64
       Height = 26
@@ -5306,7 +5363,7 @@ object MainForm: TMainForm
       Value = 0
     end
     object sbAlturaV: TSpinEdit
-      Left = 99
+      Left = 101
       Top = 29
       Width = 64
       Height = 26
@@ -5317,7 +5374,7 @@ object MainForm: TMainForm
       Value = 0
     end
     object sbCompriTextoV: TSpinEdit
-      Left = 183
+      Left = 185
       Top = 29
       Width = 109
       Height = 26

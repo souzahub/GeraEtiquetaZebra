@@ -1,5 +1,9 @@
 [Atualizações]
 
+v.31.01.24
++ alterado qtd de 1 apenas -  para (qtd1 de até atd 2)
++ Adicionado opçaõ de aceitar acento ( TESTE )
+
 v.18.01.24
 + Adicionado opção de etiqueta vertical
 

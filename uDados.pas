@@ -83,10 +83,10 @@ begin
 
     end;
 
-
   finally
     ListaParametros.Free;
   end;
+
 end;
 
 procedure TdmDados.Conectar;
