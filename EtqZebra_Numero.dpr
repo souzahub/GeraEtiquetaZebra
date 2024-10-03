@@ -1,4 +1,4 @@
-program GeraTxt;
+program EtqZebra_Numero;
 
 uses
   Vcl.Forms,
@@ -14,7 +14,6 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  TStyleManager.TrySetStyle('Aqua Light Slate');
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TForm2, Form2);
   Application.CreateForm(TdmDados, dmDados);

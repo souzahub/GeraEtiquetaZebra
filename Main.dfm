@@ -4,7 +4,7 @@ object MainForm: TMainForm
   ActiveControl = sbAlturaV
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'GERA ETIQUETA  v.31.01.24'
+  Caption = 'GERA ETIQUETA |  Release: 24/09/24'
   ClientHeight = 263
   ClientWidth = 817
   Color = clWhite
@@ -5080,7 +5080,7 @@ object MainForm: TMainForm
   TextHeight = 16
   object btGeraArquivo: TStyledGraphicButton
     Left = 640
-    Top = 188
+    Top = 184
     Width = 158
     Height = 58
     Font.Charset = DEFAULT_CHARSET
@@ -5331,21 +5331,21 @@ object MainForm: TMainForm
       Caption = 'Comprimento'
     end
     object Label5: TLabel
-      Left = 101
+      Left = 104
       Top = 6
       Width = 34
       Height = 16
       Caption = 'Altura'
     end
     object Comprimento_texto: TLabel
-      Left = 185
+      Left = 187
       Top = 6
       Width = 109
       Height = 16
       Caption = 'Comprimento texto'
     end
     object Label6: TLabel
-      Left = 310
+      Left = 315
       Top = 6
       Width = 66
       Height = 16
@@ -5363,7 +5363,7 @@ object MainForm: TMainForm
       Value = 0
     end
     object sbAlturaV: TSpinEdit
-      Left = 101
+      Left = 104
       Top = 29
       Width = 64
       Height = 26
@@ -5374,7 +5374,7 @@ object MainForm: TMainForm
       Value = 0
     end
     object sbCompriTextoV: TSpinEdit
-      Left = 185
+      Left = 187
       Top = 29
       Width = 109
       Height = 26
@@ -5385,7 +5385,7 @@ object MainForm: TMainForm
       Value = 0
     end
     object sbAlturaTextoV: TSpinEdit
-      Left = 308
+      Left = 313
       Top = 29
       Width = 109
       Height = 26

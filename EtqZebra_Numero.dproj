@@ -1,9 +1,9 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{1CB534CE-645C-4D3F-B26A-6A0AC961D732}</ProjectGuid>
+        <ProjectGuid>{4428D831-7802-4FAF-AC8E-4407A692570A}</ProjectGuid>
         <ProjectVersion>18.5</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
-        <MainSource>GeraTxt.dpr</MainSource>
+        <MainSource>EtqZebra_Numero.dpr</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
@@ -57,8 +57,7 @@
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
         <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
-        <SanitizedProjectName>GeraTxt</SanitizedProjectName>
-        <Custom_Styles>&quot;Aqua Light Slate|VCLSTYLE|$(BDSCOMMONDIR)\Styles\AquaLightSlate.vsf&quot;</Custom_Styles>
+        <SanitizedProjectName>EtqZebra_Numero</SanitizedProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <DCC_UsePackage>DBXSqliteDriver;fmxase;DBXDb2Driver;vclactnband;vclFireDAC;FMXComponents;tethering;FireDACADSDriver;ACBr_BPeDabpeESCPOS;ACBr_BPe;JvPluginSystem;FireDACMSSQLDriver;vcltouch;ACBr_NFe;JvBands;vcldb;Intraweb;svn;JvJans;ACBr_NFeDanfeESCPOS;JvDotNetCtrls;FMXfrx26;vclib;frxTee26;FireDACDBXDriver;RESTDWDriverFD;vclx;ACBr_SATExtratoRL;RESTBackendComponents;uSynEdit_R2022;ACBr_Reinf;VCLRESTComponents;fsTee26;vclie;bindengine;CloudService;ACBr_PAF;FireDACMySQLDriver;JvHMI;fsIBX26;ACBr_SATECFVirtual;frx26;DataSnapClient;FMXComponentEd;bindcompdbx;ACBr_CTeDacteRL;ACBr_TCP;DBXSybaseASEDriver;ACBr_CTe;IndyIPServer;IndySystem;frxDBX26;fsADO26;ACBr_PagFor;SGerenciaPix;dsnapcon;ACBre_Social;FireDACMSAccDriver;fmxFireDAC;FireDACInfxDriver;vclimg;ACBr_SPEDImportar;Jcl;ACBr_SPED;ACBr_MDFe;emshosting;ACBr_BoletoRL;ACBr_LFD;FireDACTDataDriver;DBXOdbcDriver;FMXTee;soaprtl;DbxCommonDriver;ACBr_CIOT;OtsFirebase;ACBr_NFSeDanfseRL;JvManagedThreads;xmlrtl;soapmidas;DataSnapNativeClient;fmxobj;JvTimeFramework;rtl;emsserverresource;DbxClientDriver;DBXSybaseASADriver;JvSystem;JvStdCtrls;ACBr_Convenio115;appanalytics;TCFLib260;IndyIPClient;bindcompvcl;TeeUI;FMXfsDB26;JvDocking;JvPascalInterpreter;VclSmp;FireDACODBCDriver;JclVcl;DataSnapIndy10ServerTransport;ACBr_Boleto;DataSnapProviderClient;ACBr_SEF2;FireDACMongoDBDriver;JvControls;JvPrintPreview;ACBr_NFSe;FMXfsTee26;DataSnapServerMidas;RESTComponents;DBXInterBaseDriver;RESTDWWizards;ACBr_NF3e;ACBr_TEFD;emsclientfiredac;ACBr_SATWS;DataSnapFireDAC;svnui;JvGlobus;FMXfrxDB26;DBXMSSQLDriver;JvMM;ACBr_MDFeDamdfeRL;DatasnapConnectorsFreePascal;ACBr_EDI;ACBr_ONE;bindcompfmx;JvNet;DBXOracleDriver;inetdb;JvAppFrm;CEF4Delphi;ACBr_Diversos;FmxTeeUI;emsedge;ACBr_LCDPR;FireDACIBDriver;fmx;fmxdae;JvWizards;ACBr_Ponto;fs26;dbexpress;IndyCore;OnGuardDR;frxIntIO26;JvPageComps;dsnap;DataSnapCommon;emsclient;uniGUI26Chart;FireDACCommon;uniGUI26m;JvDB;frxcs26;FMXfs26;DataSnapConnectors;ACBR_DeSTDA;soapserver;ACBr_SAT;RSP;JclDeveloperTools;TUniFalcon26;FireDACOracleDriver;DBXMySQLDriver;JvCmp;DBXFirebirdDriver;ACBr_Sintegra;FireDACCommonODBC;FireDACCommonDriver;ACBr_GNRE;ACBr_ADRCST;TInjectCollection;frxIntIOIndy26;inet;IndyIPCommon;JvCustom;vcl;ACBr_NFeDanfeRL;ACBr_SATExtratoESCPOS;frxDB26;JvXPCtrls;FireDACDb2Driver;ACBr_Integrador;SGerenciaPago;uniGUI26VCL;fsDB26;TeeDB;FireDAC;JvCore;ACBr_Comum;frxe26;JvCrypt;FireDACSqliteDriver;FireDACPgDriver;ibmonitor;FireDACASADriver;ACBr_GNREGuiaRL;frxIBX26;JvDlgs;JvRuntimeDesign;ibxpress;Tee;DataSnapServer;ibxbindings;vclwinx;FireDACDSDriver;ACBr_OpenSSL;frxADO26;CustomIPTransport;vcldsnap;uniGUI26;bindcomp;ACBr_Serial;DBXInformixDriver;frce;ACBr_BlocoX;dbxcds;ACBr_NFCeECFVirtual;adortl;ACBr_ANe;dsnapxml;dbrtl;inetdbxpress;IndyProtocols;JclContainers;ACBr_NF3eDANF3eESCPOS;ACBr_MTER;RestDatawareCORE;$(DCC_UsePackage)</DCC_UsePackage>
@@ -141,18 +140,11 @@
         <BorlandProject>
             <Delphi.Personality>
                 <Source>
-                    <Source Name="MainSource">GeraTxt.dpr</Source>
+                    <Source Name="MainSource">EtqZebra_Numero.dpr</Source>
                 </Source>
                 <Excluded_Packages/>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="D:\documentos\Luan\2022\delphi\icones\Document-save-as-icon48.png" Configuration="Debug" Class="UWP_DelphiLogo150">
-                    <Platform Name="Win32">
-                        <RemoteDir>Assets\</RemoteDir>
-                        <RemoteName>Logo150x150.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="D:\documentos\Luan\2022\delphi\icones\Document-save-icon48.png" Configuration="Debug" Class="UWP_DelphiLogo44">
                     <Platform Name="Win32">
                         <RemoteDir>Assets\</RemoteDir>
@@ -160,9 +152,16 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="bin\GeraTxt.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="bin\EtqZebra_Numero.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
-                        <RemoteName>GeraTxt.exe</RemoteName>
+                        <RemoteName>EtqZebra_Numero.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="D:\documentos\Luan\2022\delphi\icones\Document-save-as-icon48.png" Configuration="Debug" Class="UWP_DelphiLogo150">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets\</RemoteDir>
+                        <RemoteName>Logo150x150.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
