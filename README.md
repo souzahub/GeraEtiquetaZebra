@@ -1,4 +1,4 @@
-# Sistema de Gerador de codigo zebra pelo txt
+# Sistema de Gerador de codigo zebra
 # GeraEtiquetaZebra
 ---
 ## Olá! Bem-vindo(a) ao meu repositório.
